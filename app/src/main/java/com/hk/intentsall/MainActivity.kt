@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         dataBinding.btnOpenEmail.setOnClickListener(this)
         dataBinding.btnOpenGallery.setOnClickListener(this)
+        dataBinding.btnOpenWebPage.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -34,6 +35,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_open_gallery -> {
                 openGallery()
             }
+            R.id.btn_open_web_page -> {
+                openWebPage()
+            }
+        }
+    }
+
+    private fun openWebPage() {
+        val intent = Intent()
+        intent.action = Intent.ACTION_VIEW
+        intent.data = Uri.parse("https:://www.google.com")
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
         }
     }
 
