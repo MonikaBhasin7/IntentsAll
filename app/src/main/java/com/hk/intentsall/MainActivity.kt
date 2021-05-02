@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         dataBinding.btnOpenEmail.setOnClickListener(this)
         dataBinding.btnOpenGallery.setOnClickListener(this)
         dataBinding.btnOpenWebPage.setOnClickListener(this)
+        dataBinding.btnOpenParkplus.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -38,6 +39,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_open_web_page -> {
                 openWebPage()
             }
+            R.id.btn_open_parkplus -> {
+                openParkPlus()
+            }
+        }
+    }
+
+    val order_details_from_parkplus = 2
+    private fun openParkPlus() {
+        val intent = Intent()
+        intent.action = Intent.ACTION_VIEW
+        intent.data = Uri.parse("https://www.parkplus.in/monika?order_id=1234")
+        //intent.putExtra("order_id", "1234")
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivityForResult(intent, order_details_from_parkplus)
         }
     }
 
@@ -65,6 +80,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val thumbnail: Bitmap? = data?.getParcelableExtra("data")
             val fullPhotoUri: Uri? = data?.data
             Log.d(TAG, "photo uri $fullPhotoUri")
+        } else if(requestCode == order_details_from_parkplus && resultCode == Activity.RESULT_OK) {
+            val order_details = data?.getStringExtra("order_details")
+            dataBinding.txtOrderDetailsFromParkplus.text = order_details
         }
         super.onActivityResult(requestCode, resultCode, data)
     }

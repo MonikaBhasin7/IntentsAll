@@ -92,6 +92,25 @@
                 android:layout_margin="20dp"
                 android:layout_height="wrap_content" />
 
+            <Button
+                android:id="@+id/btn_open_parkplus"
+                app:layout_constraintStart_toStartOf="@id/txt_email_to"
+                app:layout_constraintEnd_toEndOf="@id/txt_email_to"
+                app:layout_constraintTop_toBottomOf="@id/btn_open_web_page"
+                android:text="Open ParkPlus"
+                android:layout_width="match_parent"
+                android:layout_margin="20dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_order_details_from_parkplus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order Details is empty now"
+                app:layout_constraintStart_toStartOf="@id/btn_open_parkplus"
+                app:layout_constraintEnd_toEndOf="@id/btn_open_parkplus"
+                app:layout_constraintTop_toBottomOf="@id/btn_open_parkplus"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
